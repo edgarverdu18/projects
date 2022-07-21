@@ -2,7 +2,6 @@ package ajedrez;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.*;
 import javax.swing.*;
@@ -11,17 +10,6 @@ public class Board implements ActionListener{
 	
 	JFrame frame;
 	JPanel panel;
-//	String[][] Casillas = new String[8][8];
-//    for(int y=0; y < Casillas.length; y++) {
-//        for(int x=0; x < Casillas[y].length; x++) {
-//            PanelTableroAjedrez.add(new JButton(Casillas[y][x]));
-//            if((y+x+1)%2==0){
-//                Casillas[y][x].setBackground(Color.BLACK);
-//            }else{
-//                Casillas[y][x].setBackground(Color.WHITE);
-//            }
-//        }
-//    }
 
 	public Board() {
 		panel = new JPanel();

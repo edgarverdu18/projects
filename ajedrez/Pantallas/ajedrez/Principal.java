@@ -34,7 +34,7 @@ public class Principal implements ActionListener{
 		salida.addActionListener(this);
 		
 		icono = new JLabel();
-		icono.setIcon(new ImageIcon("images/titulo.jpg"));
+		icono.setIcon(new ImageIcon("Images/titulo.jpg"));
 		Dimension iconoSize = icono.getPreferredSize();
 		icono.setBounds(0, 0, iconoSize.width, iconoSize.height);
 		
