@@ -17,6 +17,7 @@ public class Board implements ActionListener{
 		panel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.green, 10), BorderFactory.createLineBorder(Color.blue, 5)));
 		panel.setLayout(new GridLayout(8, 8));
 		
+		ButtonIndex[][] botones = new ButtonIndex[8][8];
 		for(int i = 0; i < 8; i++) {
 			for(int j = 0; j < 8; j++) {
 				JButton button = new JButton();
@@ -26,6 +27,7 @@ public class Board implements ActionListener{
 					button.setBackground(Color.black);
 				}
 				panel.add(button);
+				botones[i][j] = new ButtonIndex(button,i,j);
 			}
 		}
 		
