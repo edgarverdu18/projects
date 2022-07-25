@@ -8,6 +8,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="Pantallas"/>
 	<classpathentry kind="src" path="Piezas"/>
-	<classpathentry kind="src" path="mysc"/>
+	<classpathentry kind="src" path="Mysc"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
