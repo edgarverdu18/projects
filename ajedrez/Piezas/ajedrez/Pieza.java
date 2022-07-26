@@ -4,11 +4,12 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class Pieza extends JLabel{
+public abstract class Pieza extends JLabel{
 
-	private Icon icon;
+	protected Icon icon;
+	protected boolean activa;
 	public Pieza() {
-		this.icon = new ImageIcon("Images/reyB.png");
+		this.activa = true;
 	}
 	
 	public Icon getIcon() { return icon;}

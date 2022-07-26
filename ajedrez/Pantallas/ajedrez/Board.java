@@ -10,6 +10,7 @@ public class Board implements ActionListener{
 	
 	JFrame frame;
 	JPanel panel;
+	ButtonIndex[][] botones = new ButtonIndex[8][8];
 
 	public Board() {
 		panel = new JPanel();
@@ -17,8 +18,8 @@ public class Board implements ActionListener{
 		panel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.green, 10), BorderFactory.createLineBorder(Color.blue, 5)));
 		panel.setLayout(new GridLayout(8, 8));
 		
-		ButtonIndex[][] botones = new ButtonIndex[8][8];
-		Pieza pieza = new Pieza();
+		
+		Pieza pieza = new Torre("Images/negras");
 		for(int i = 0; i < 8; i++) {
 			for(int j = 0; j < 8; j++) {
 				JButton button = new JButton();
@@ -29,7 +30,9 @@ public class Board implements ActionListener{
 				}
 				botones[i][j] = new ButtonIndex(button,i,j);
 				botones[i][j].getButton().setIcon(pieza.getIcon());
+				botones[i][j].getButton().addActionListener(this);
 				panel.add(botones[i][j].getButton());
+				
 			}
 		}
 		
@@ -44,9 +47,15 @@ public class Board implements ActionListener{
 	
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	public void actionPerformed(ActionEvent e) {
+		JButton button = (JButton) e.getSource();
+		for(int i = 0; i < 8; i++) {
+			for(int j = 0; j < 8; j++) {
+				if(botones[i][j].getButton().equals(button)) {
+					botones[i][j].getButton().setIcon(null);
+				}
+			}
+		}	
 	}
 
 }
