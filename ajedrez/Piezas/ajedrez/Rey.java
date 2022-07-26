@@ -7,6 +7,7 @@ public class Rey extends Pieza {
 
 	public Rey(String bando) {
 		super();
+		super.bando  = bando;
 		String nombre = "Images/" + bando + "/rey.png";
 		this.icon = new ImageIcon(nombre);
 	}

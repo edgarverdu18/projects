@@ -53,18 +53,15 @@ public class Principal implements ActionListener{
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		
-		System.out.println("Hola Mundo");
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String opcion = e.getActionCommand();
 		if(opcion.equals("Start")) {
-			System.out.println(opcion);
 			new Board();
 			frame.dispose();
 		}else if(opcion.equals("Exit")) {
-			System.out.println(opcion);
 			frame.dispose();
 		}
 		

@@ -13,10 +13,12 @@ public class Board implements ActionListener{
 	ButtonIndex[][] botones = new ButtonIndex[8][8];
 	Player player1;
 	Player player2;
+	int jugador;
 
 	public Board() {
 		player1 = new Player("blancas");
 		player2 = new Player("negras");
+		jugador = 1;
 		
 		panel = new JPanel();
 		panel.setBackground(Color.lightGray);
@@ -33,7 +35,6 @@ public class Board implements ActionListener{
 					button.setBackground(Color.black);
 				}
 				botones[i][j] = new ButtonIndex(button,i,j);
-				//botones[i][j].getButton().setIcon(pieza.getIcon());
 				botones[i][j].getButton().addActionListener(this);
 				panel.add(botones[i][j].getButton());
 				
@@ -53,28 +54,28 @@ public class Board implements ActionListener{
 	
 
 	public void InitPiezas() {
-		botones[0][0].getButton().setIcon(player2.getTorre1().getIcon());
-		botones[0][1].getButton().setIcon(player2.getCaballo1().getIcon());
-		botones[0][2].getButton().setIcon(player2.getAlfil1().getIcon());
-		botones[0][3].getButton().setIcon(player2.getReina().getIcon());
-		botones[0][4].getButton().setIcon(player2.getRey().getIcon());
-		botones[0][5].getButton().setIcon(player2.getAlfil2().getIcon());
-		botones[0][6].getButton().setIcon(player2.getCaballo2().getIcon());
-		botones[0][7].getButton().setIcon(player2.getTorre2().getIcon());
+		botones[0][0].setPieza(player2.getTorre1());
+		botones[0][1].setPieza(player2.getCaballo1());
+		botones[0][2].setPieza(player2.getAlfil1());
+		botones[0][3].setPieza(player2.getReina());
+		botones[0][4].setPieza(player2.getRey());
+		botones[0][5].setPieza(player2.getAlfil2());
+		botones[0][6].setPieza(player2.getCaballo2());
+		botones[0][7].setPieza(player2.getTorre2());
 		for(int i = 0; i < 8; i++) {
-			botones[1][i].getButton().setIcon(player2.getPeon1().getIcon());
+			botones[1][i].setPieza(player2.getPeon1());
 		}
 
-		botones[7][0].getButton().setIcon(player1.getTorre1().getIcon());
-		botones[7][1].getButton().setIcon(player1.getCaballo1().getIcon());
-		botones[7][2].getButton().setIcon(player1.getAlfil1().getIcon());
-		botones[7][3].getButton().setIcon(player1.getReina().getIcon());
-		botones[7][4].getButton().setIcon(player1.getRey().getIcon());
-		botones[7][5].getButton().setIcon(player1.getAlfil2().getIcon());
-		botones[7][6].getButton().setIcon(player1.getCaballo2().getIcon());
-		botones[7][7].getButton().setIcon(player1.getTorre2().getIcon());
+		botones[7][0].setPieza(player1.getTorre1());
+		botones[7][1].setPieza(player1.getCaballo1());
+		botones[7][2].setPieza(player1.getAlfil1());
+		botones[7][3].setPieza(player1.getReina());
+		botones[7][4].setPieza(player1.getRey());
+		botones[7][5].setPieza(player1.getAlfil2());
+		botones[7][6].setPieza(player1.getCaballo2());
+		botones[7][7].setPieza(player1.getTorre2());
 		for(int i = 0; i < 8; i++) {
-			botones[6][i].getButton().setIcon(player1.getPeon1().getIcon());
+			botones[6][i].setPieza(player1.getPeon1());
 		}
 	}
 	@Override
@@ -83,7 +84,16 @@ public class Board implements ActionListener{
 		for(int i = 0; i < 8; i++) {
 			for(int j = 0; j < 8; j++) {
 				if(botones[i][j].getButton().equals(button)) {
-					botones[i][j].getButton().setIcon(null);
+					if(botones[i][j].getOcupada()) {
+						if(jugador == 1 && botones[i][j].getPieza().getBando().equals("blancas")) {
+							botones[i][j].getButton().setIcon(null);
+							jugador = 2;
+						}
+						else if(jugador == 2 && botones[i][j].getPieza().getBando().equals("negras")) {
+							botones[i][j].getButton().setIcon(null);
+							jugador = 1;
+						}
+					}
 				}
 			}
 		}	

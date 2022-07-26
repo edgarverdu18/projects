@@ -7,6 +7,7 @@ public class Torre extends Pieza {
 
 	public Torre(String bando) {
 		super();
+		super.bando  = bando;
 		String nombre = "Images/" + bando + "/torre.png";
 		this.icon = new ImageIcon(nombre);
 	}
