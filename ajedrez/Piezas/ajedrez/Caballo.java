@@ -7,7 +7,7 @@ public class Caballo extends Pieza {
 
 	public Caballo(String bando) {
 		super();
-		String nombre = bando + "/caballo.png";
+		String nombre = "Images/" + bando + "/caballo.png";
 		this.icon = new ImageIcon(nombre);
 	}
 }

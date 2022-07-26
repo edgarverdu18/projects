@@ -7,7 +7,7 @@ public class Reina extends Pieza {
 
 	public Reina(String bando) {
 		super();
-		String nombre = bando + "/reina.png";
+		String nombre = "Images/" + bando + "/reina.png";
 		this.icon = new ImageIcon(nombre);
 	}
 }

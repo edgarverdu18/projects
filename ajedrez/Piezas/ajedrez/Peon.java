@@ -7,7 +7,7 @@ public class Peon extends Pieza {
 
 	public Peon(String bando) {
 		super();
-		String nombre = bando + "/peon.png";
+		String nombre = "Images/" + bando + "/peon.png";
 		this.icon = new ImageIcon(nombre);
 	}
 }

@@ -7,7 +7,7 @@ public class Alfil extends Pieza {
 
 	public Alfil(String bando) {
 		super();
-		String nombre = bando + "/alfil.png";
+		String nombre = "Images/" + bando + "/alfil.png";
 		this.icon = new ImageIcon(nombre);
 	}
 }
