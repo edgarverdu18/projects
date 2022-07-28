@@ -1,8 +1,5 @@
 package ajedrez;
 
-import java.util.ArrayList;
-import java.util.Vector;
-
 public class Player {
 	private String bando;
 	private int numPiezas;

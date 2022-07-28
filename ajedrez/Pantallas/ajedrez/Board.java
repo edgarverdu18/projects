@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.*;
+import java.util.ArrayList;
+
 import javax.swing.*;
 
 public class Board implements ActionListener{
@@ -25,7 +27,6 @@ public class Board implements ActionListener{
 		panel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.green, 10), BorderFactory.createLineBorder(Color.blue, 5)));
 		panel.setLayout(new GridLayout(8, 8));
 		
-		//Pieza pieza = new Torre("Images/negras");
 		for(int i = 0; i < 8; i++) {
 			for(int j = 0; j < 8; j++) {
 				JButton button = new JButton();
@@ -62,9 +63,9 @@ public class Board implements ActionListener{
 		botones[0][5].setPieza(player2.getAlfil2());
 		botones[0][6].setPieza(player2.getCaballo2());
 		botones[0][7].setPieza(player2.getTorre2());
-		for(int i = 0; i < 8; i++) {
-			botones[1][i].setPieza(player2.getPeon1());
-		}
+//		for(int i = 0; i < 8; i++) {
+//			botones[1][i].setPieza(player2.getPeon1());
+//		}
 
 		botones[7][0].setPieza(player1.getTorre1());
 		botones[7][1].setPieza(player1.getCaballo1());
@@ -74,9 +75,9 @@ public class Board implements ActionListener{
 		botones[7][5].setPieza(player1.getAlfil2());
 		botones[7][6].setPieza(player1.getCaballo2());
 		botones[7][7].setPieza(player1.getTorre2());
-		for(int i = 0; i < 8; i++) {
-			botones[6][i].setPieza(player1.getPeon1());
-		}
+//		for(int i = 0; i < 8; i++) {
+//			botones[6][i].setPieza(player1.getPeon1());
+//		}
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -85,6 +86,13 @@ public class Board implements ActionListener{
 			for(int j = 0; j < 8; j++) {
 				if(botones[i][j].getButton().equals(button)) {
 					if(botones[i][j].getOcupada()) {
+						if(botones[i][j].getPieza() instanceof Alfil) {
+							ArrayList<ButtonIndex> disponibles = botones[i][j].getPieza().posDisponibles(botones[i][j], botones);
+							for(ButtonIndex posicion: disponibles) {
+								posicion.getButton().setBackground(new Color(0,255,0,100));
+							}
+						}
+							
 						if(jugador == 1 && botones[i][j].getPieza().getBando().equals("blancas")) {
 							botones[i][j].getButton().setIcon(null);
 							jugador = 2;

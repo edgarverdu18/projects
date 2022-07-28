@@ -1,5 +1,7 @@
 package ajedrez;
 
+import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
 
 public class Torre extends Pieza {
@@ -10,5 +12,11 @@ public class Torre extends Pieza {
 		super.bando  = bando;
 		String nombre = "Images/" + bando + "/torre.png";
 		this.icon = new ImageIcon(nombre);
+	}
+
+	@Override
+	public ArrayList<ButtonIndex> posDisponibles(ButtonIndex posicion, ButtonIndex[][] botones) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

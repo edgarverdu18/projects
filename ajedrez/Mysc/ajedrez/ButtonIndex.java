@@ -9,7 +9,6 @@ public class ButtonIndex {
 	private int indexColumn;
 	private boolean ocupada;
 	private Pieza pieza;
-	private Icon icon;
 	
 	public ButtonIndex(JButton button, int indexRow, int indexColumn) {
 		this.button = button;
