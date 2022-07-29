@@ -16,7 +16,18 @@ public class Reina extends Pieza {
 
 	@Override
 	public ArrayList<ButtonIndex> posDisponibles(ButtonIndex posicion, ButtonIndex[][] botones) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<ButtonIndex> disponibles = new ArrayList<ButtonIndex>();
+		int fila = posicion.getRow(), columna = posicion.getColumn();
+		int suma = fila + columna, resta = fila - columna;
+		
+		for(int i = fila; i <= 7; i++) {
+			for(int j = columna; j <= 7; j++) {
+				if(i - j == resta || i == fila) {
+					
+				}
+			}
+		}
+		
+		return disponibles;
 	}
 }

@@ -76,7 +76,8 @@ public class Board implements ActionListener{
 		botones[7][6].setPieza(player1.getCaballo2());
 		botones[7][7].setPieza(player1.getTorre2());
 		
-		botones[4][4].setPieza(player1.getCaballo1());
+		botones[4][4].setPieza(player1.getTorre1());
+		botones[2][4].setPieza(player2.getTorre1());
 //		for(int i = 0; i < 8; i++) {
 //			botones[6][i].setPieza(player1.getPeon1());
 //		}
@@ -88,7 +89,7 @@ public class Board implements ActionListener{
 			for(int j = 0; j < 8; j++) {
 				if(botones[i][j].getButton().equals(button)) {
 					if(botones[i][j].getOcupada()) {
-						if(botones[i][j].getPieza() instanceof Caballo) {
+						if(botones[i][j].getPieza() instanceof Torre) {
 							ArrayList<ButtonIndex> disponibles = botones[i][j].getPieza().posDisponibles(botones[i][j], botones);
 							for(ButtonIndex posicion: disponibles) {
 								posicion.getButton().setBackground(new Color(0,255,0,100));
