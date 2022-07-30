@@ -16,7 +16,11 @@ public class Peon extends Pieza {
 
 	@Override
 	public ArrayList<ButtonIndex> posDisponibles(ButtonIndex posicion, ButtonIndex[][] botones) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<ButtonIndex> disponibles = new ArrayList<ButtonIndex>();
+		int fila = posicion.getRow(), columna = posicion.getColumn();
+
+		
+		
+		return disponibles;
 	}
 }

@@ -1,7 +1,6 @@
 package ajedrez;
 
 import java.util.ArrayList;
-
 import javax.swing.Icon;
 import javax.swing.JLabel;
 
