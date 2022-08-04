@@ -16,11 +16,16 @@ public class Board implements ActionListener{
 	Player player1;
 	Player player2;
 	int jugador;
+	boolean mov;
+	ButtonIndex botonAMover;
+	ArrayList<ButtonIndex> disponibles;
 
 	public Board() {
 		player1 = new Player("blancas");
 		player2 = new Player("negras");
 		jugador = 1;
+		disponibles = new ArrayList<ButtonIndex>();
+		mov = false;
 		
 		panel = new JPanel();
 		panel.setBackground(Color.lightGray);
@@ -35,7 +40,7 @@ public class Board implements ActionListener{
 				}else {
 					button.setBackground(Color.black);
 				}
-				botones[i][j] = new ButtonIndex(button,i,j);
+				botones[i][j] = new ButtonIndex(button,i,j, button.getBackground());
 				botones[i][j].getButton().addActionListener(this);
 				panel.add(botones[i][j].getButton());
 				
@@ -63,9 +68,9 @@ public class Board implements ActionListener{
 		botones[0][5].setPieza(player2.getAlfil2());
 		botones[0][6].setPieza(player2.getCaballo2());
 		botones[0][7].setPieza(player2.getTorre2());
-//		for(int i = 0; i < 8; i++) {
-//			botones[1][i].setPieza(player2.getPeon1());
-//		}
+		for(int i = 0; i < 8; i++) {
+			botones[1][i].setPieza(player2.getPeon1());
+		}
 
 		botones[7][0].setPieza(player1.getTorre1());
 		botones[7][1].setPieza(player1.getCaballo1());
@@ -76,18 +81,13 @@ public class Board implements ActionListener{
 		botones[7][6].setPieza(player1.getCaballo2());
 		botones[7][7].setPieza(player1.getTorre2());
 		
-		botones[4][4].setPieza(player1.getRey());
-		botones[2][2].setPieza(player1.getPeon1());
-		botones[2][4].setPieza(player2.getTorre1());
-		botones[4][2].setPieza(player1.getPeon1());
-		botones[6][2].setPieza(player2.getTorre1());
-		botones[6][4].setPieza(player1.getPeon1());
-		botones[6][6].setPieza(player2.getTorre1());
-		botones[2][6].setPieza(player1.getPeon1());
-		botones[4][6].setPieza(player2.getTorre1());
-//		for(int i = 0; i < 8; i++) {
-//			botones[6][i].setPieza(player1.getPeon1());
-//		}
+		for(int i = 0; i < 8; i++) {
+			botones[6][i].setPieza(player1.getPeon1());
+		}
+		botones[5][1].setPieza(player2.getTorre1());
+		botones[5][0].setPieza(player2.getAlfil1());
+		botones[5][3].setPieza(player1.getTorre1());
+
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -95,24 +95,44 @@ public class Board implements ActionListener{
 		for(int i = 0; i < 8; i++) {
 			for(int j = 0; j < 8; j++) {
 				if(botones[i][j].getButton().equals(button)) {
-					if(botones[i][j].getOcupada()) {
-						if(botones[i][j].getPieza() instanceof Rey) {
-							ArrayList<ButtonIndex> disponibles = botones[i][j].getPieza().posDisponibles(botones[i][j], botones);
-
+					if(!mov) {
+						if(botones[i][j].getOcupada()) {
+							if(jugador == 1 && botones[i][j].getPieza().getBando().equals("blancas")) {
+								rePrint();
+								disponibles = botones[i][j].getPieza().posDisponibles(botones[i][j], botones);
+								mov = true;
+								botonAMover = botones[i][j];
+							}else if(jugador == 2 && botones[i][j].getPieza().getBando().equals("negras")) {
+								rePrint();
+								disponibles = botones[i][j].getPieza().posDisponibles(botones[i][j], botones);
+								mov = true;
+								botonAMover = botones[i][j];
+							}
 						}
-							
-						if(jugador == 1 && botones[i][j].getPieza().getBando().equals("blancas")) {
-							botones[i][j].getButton().setIcon(null);
-							jugador = 2;
-						}
-						else if(jugador == 2 && botones[i][j].getPieza().getBando().equals("negras")) {
-							botones[i][j].getButton().setIcon(null);
-							jugador = 1;
+					}else {
+						if(disponibles.contains(botones[i][j])) {
+							botones[i][j].setPieza(botonAMover.getPieza());
+							botonAMover.quitarPieza();
+							rePrint();
+							mov = false;
+							if(jugador == 1)
+								jugador = 2;
+							else
+								jugador = 1;
 						}
 					}
 				}
 			}
 		}	
+	}
+	
+	public void rePrint() {
+		if(!disponibles.isEmpty()) {
+			for(ButtonIndex b : disponibles) {
+				b.getButton().setBackground(b.getColor());
+			}
+			disponibles.clear();
+		}
 	}
 
 }

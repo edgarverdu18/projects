@@ -1,5 +1,6 @@
 package ajedrez;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -25,11 +26,14 @@ public class Alfil extends Pieza {
 				if(botones[fila][columna].getPieza().getBando().equals(this.bando)) {
 					break;
 				}else {
+					botones[fila][columna].getButton().setBackground(new Color(255,0,0,100));
 					posiciones.add(botones[fila][columna]);
 					break;
 				}
-			}else
+			}else {
+				botones[fila][columna].getButton().setBackground(new Color(0,255,0,100));
 				posiciones.add(botones[fila][columna]);
+			}
 		}
 		fila = posicion.getRow(); columna = posicion.getColumn();
 		while(fila - 1 >= 0 && columna + 1 <= 7){
@@ -38,11 +42,14 @@ public class Alfil extends Pieza {
 				if(botones[fila][columna].getPieza().getBando().equals(this.bando)) {
 					break;
 				}else {
+					botones[fila][columna].getButton().setBackground(new Color(255,0,0,100));
 					posiciones.add(botones[fila][columna]);
 					break;
 				}
-			}else
+			}else {
+				botones[fila][columna].getButton().setBackground(new Color(0,255,0,100));
 				posiciones.add(botones[fila][columna]);
+			}
 		}
 		fila = posicion.getRow(); columna = posicion.getColumn();
 		while(fila + 1 <= 7 && columna - 1 >= 0) {
@@ -51,11 +58,14 @@ public class Alfil extends Pieza {
 				if(botones[fila][columna].getPieza().getBando().equals(this.bando)) {
 					break;
 				}else {
+					botones[fila][columna].getButton().setBackground(new Color(255,0,0,100));
 					posiciones.add(botones[fila][columna]);
 					break;
 				}
-			}else
-				posiciones.add(botones[fila][columna]);
+			}else {
+				botones[fila][columna].getButton().setBackground(new Color(0,255,0,100));
+				posiciones.add(botones[fila][columna]);	
+			}
 		}
 		fila = posicion.getRow(); columna = posicion.getColumn();
 		while(fila + 1 <= 7 && columna + 1 <= 7) {
@@ -64,11 +74,14 @@ public class Alfil extends Pieza {
 				if(botones[fila][columna].getPieza().getBando().equals(this.bando)) {
 					break;
 				}else {
+					botones[fila][columna].getButton().setBackground(new Color(255,0,0,100));
 					posiciones.add(botones[fila][columna]);
 					break;
 				}
-			}else
+			}else {
+				botones[fila][columna].getButton().setBackground(new Color(0,255,0,100));
 				posiciones.add(botones[fila][columna]);
+			}
 		}
 		
 		return posiciones;

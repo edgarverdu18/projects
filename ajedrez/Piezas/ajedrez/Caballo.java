@@ -1,5 +1,6 @@
 package ajedrez;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -25,9 +26,11 @@ public class Caballo extends Pieza {
 					if(fila >= 0 && fila <= 7 && columna >= 0 && columna <= 7) {
 						if(botones[fila][columna].getOcupada()) {
 							if(!botones[fila][columna].getPieza().getBando().equals(this.getBando())) {
+								botones[fila][columna].getButton().setBackground(new Color(255,0,0,100));
 								disponibles.add(botones[fila][columna]);
 							}
 						}else {
+							botones[fila][columna].getButton().setBackground(new Color(0,255,0,100));
 							disponibles.add(botones[fila][columna]);
 						}
 					}
